@@ -1,9 +1,10 @@
 fx_version 'cerulean'
 game 'gta5'
+lua54 'yes'
 
-author 'FjamZoo#0001 & MannyOnBrazzers#6826'
-description 'A No Pixel inspired edit of QBCore\'s Phone. Released By RenewedScripts'
-version 'Release'
+author 'Maintainer: LeZach#3819 | Original Editor: FjamZoo#0001 & MannyOnBrazzers#6826'
+description 'A No Pixel inspired edit of QBCore\'s Phone.'
+version '0.1.0'
 
 ui_page 'html/index.html'
 
@@ -33,7 +34,3 @@ files {
     'html/img/backgrounds/*.png',
     'html/img/apps/*.png',
 }
-
-lua54 'yes'
-
-dependency 'qb-target'
