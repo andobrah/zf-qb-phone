@@ -123,158 +123,17 @@ This is pretty much everything to do with setting up the phone. If you encounter
 
 # Contributors
 
-## Main Contributors
-<details>
-    <summary><b>FjamZoo</b></summary>
-        <p>
-            <a href="https://github.com/FjamZoo">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-        <p>
-            <a href="https://discord.gg/AS2Y8TWejt">
-                <img alt="GitHub" src="https://logos-download.com/wp-content/uploads/2021/01/Discord_Logo_full.png"
-                width="150" height="55">
-            </a>
-        </p>
-        <p>
-            <a href="https://ko-fi.com/FjamZoo">
-                <img alt="GitHub" src="https://uploads-ssl.webflow.com/5c14e387dab576fe667689cf/61e11149b3af2ee970bb8ead_Ko-fi_logo.png"
-                width="150" height="55">
-            </a>
-        </p>
-</details>
-
-<details>
-    <summary><b>MannyOnBrazzers</b></summary>
-        <p>
-            <a href="https://github.com/MannyOnBrazzers">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-        <p>
-            <a href="https://discord.gg/puWUx5FsAv">
-                <img alt="GitHub" src="https://logos-download.com/wp-content/uploads/2021/01/Discord_Logo_full.png"
-                width="150" height="55">
-            </a>
-        </p>
-        <p>
-            <a href="https://ko-fi.com/mannyonbrazzers">
-                <img alt="GitHub" src="https://uploads-ssl.webflow.com/5c14e387dab576fe667689cf/61e11149b3af2ee970bb8ead_Ko-fi_logo.png"
-                width="150" height="55">
-            </a>
-        </p>
-</details>
-
-### Other Contributors
-
-<details>
-    <summary><b>uShifty</b></summary>
-        <p>
-            <a href="https://github.com/uShifty">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-        <p>
-            <a href="https://discord.gg/AS2Y8TWejt">
-                <img alt="GitHub" src="https://logos-download.com/wp-content/uploads/2021/01/Discord_Logo_full.png"
-                width="150" height="55">
-            </a>
-        </p>
-</details>
-
-<details>
-    <summary><b>iLLeniumStudios</b></summary>
-        <p>
-            <a href="https://github.com/iLLeniumStudios">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-        <p>
-            <a href="https://discord.illenium.dev/">
-                <img alt="GitHub" src="https://logos-download.com/wp-content/uploads/2021/01/Discord_Logo_full.png"
-                width="150" height="55">
-            </a>
-        </p>
-</details>
-
-<details>
-    <summary><b>ChatDisabled</b></summary>
-        <p>
-            <a href="https://github.com/ChatDisabled">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-</details>
-
-<details>
-    <summary><b>Devyn</b></summary>
-        <p>Thanks to devyn for allowing us to use his original Group Backend code for the phone.</p>
-        <p>
-            <a href="https://github.com/darktrovx">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-</details>
-
-<details>
-    <summary><b>ST4LTH</b></summary>
-        <p>
-            <a href="https://github.com/ST4LTH">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-</details>
-
-### Other Other Contributors
-
-<details>
-    <summary><b>DevTheBully</b></summary>
-        <p>
-            <a href="https://github.com/DevTheBully">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-</details>
-
-<details>
-    <summary><b>JonasDev99</b></summary>
-        <p>
-            <a href="https://github.com/JonasDev99">
-                <img alt="GitHub" src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
-                width="150" height="70">
-            </a>
-        </p>
-</details>
-
-
-#### Other Other Other Contributors
-
-<details>
-    <summary><b>QBCore</b></summary>
-        <p>Made the original phone ages ago and it was ok ish so shoutout to them IG</p>
-</details>
-
-<details>
-    <summary><b>Kakarot</b></summary>
-        <p>He cured my boredom over at twitch.tv/kakarotqb</p>
-</details>
-
-<details>
-    <summary><b>amir_expert</b></summary>
-        <p>Sold a $50 CSS and JS edit pretty poggers</p>
-</details>
-
-<details>
-    <summary><b>Booya</b></summary>
-        <p>Reuploaded a $50 CSS and JS edit even more poggers</p>
-</details>
-
+#### Main Contributors
+- <b>FjamZoo</b>
+- <b>MannyOnBrazzers</b>
+- <b>uShifty</b>
+- <b>iLLeniumStudios</b>
+- <b>ChatDisabled</b>
+- <b>Devyn</b>
+- <b>ST4LTH</b>
+- <b>DevTheBully</b>
+- <b>JonasDev99</b>
+- <b>QBCore</b>
+- <b>Kakarot</b>
+- <b>amir_expert</b>
+- <b>Booya</b>
