@@ -122,8 +122,7 @@ This is pretty much everything to do with setting up the phone. If you encounter
 
 
 # Contributors
-
-#### Main Contributors
+### Main Contributors
 - <b>FjamZoo</b>
 - <b>MannyOnBrazzers</b>
 - <b>uShifty</b>
