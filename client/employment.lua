@@ -18,6 +18,10 @@ RegisterNUICallback('dutyStatus', function(_, cb)
     })
 end)
 
+RegisterNUICallback('QuitJob', function(data, cb)
+    TriggerServerEvent('qb-phone:server:quitJob', data.job)
+    cb('ok')
+end)
 
 RegisterNUICallback('GetEmployees', function(data, cb)
     if not data.job then return end

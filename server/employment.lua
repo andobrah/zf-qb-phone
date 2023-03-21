@@ -88,6 +88,28 @@ local function notifyPlayer(src, message)
     TriggerClientEvent('qb-phone:client:CustomNotification', src, "Employment", message, "fas fa-network-wired", "#FFFC00", 10000)
 end
 
+RegisterNetEvent('qb-phone:server:quitJob', function(job)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if not Player then return end
+
+    if Player.PlayerData.job.name == job then
+        Player.Functions.SetJob("unemployed", 0)
+    end
+
+    if CachedJobs[job] and CachedJobs[job].employees and CachedJobs[job].employees[Player.PlayerData.citizenid] then
+        CachedJobs[job].employees[Player.PlayerData.citizenid] = nil
+        MySQL.update('UPDATE player_jobs SET employees = ? WHERE jobname = ?', {json.encode(CachedJobs[job].employees), job})
+    end
+
+    if CachedPlayers[Player.PlayerData.citizenid] and CachedPlayers[Player.PlayerData.citizenid][job] then
+        CachedPlayers[Player.PlayerData.citizenid][job] = nil
+    end
+
+    TriggerClientEvent("qb-phone:client:JobsHandler", -1, job, CachedJobs[job].employees)
+    TriggerClientEvent('qb-phone:client:MyJobsHandler', src, job, nil, nil)
+end)
+
 -- ** Fire someone in the business the player firing someone MUST be boss ** --
 RegisterNetEvent('qb-phone:server:fireUser', function(Job, sCID)
     local src = source
