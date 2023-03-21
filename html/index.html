@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.9/purify.min.js" integrity="sha512-VOTFfd4vxPpuE98m9UQTN7j2N2/Blw44lZMhRTnZQqA2gOHq7Yvn5bdIDjjAZuFqqkDtppcjMW+dN3GYbhM94g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-    <title>QB-Phone</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.9/purify.min.js" integrity="sha512-VOTFfd4vxPpuE98m9UQTN7j2N2/Blw44lZMhRTnZQqA2gOHq7Yvn5bdIDjjAZuFqqkDtppcjMW+dN3GYbhM94g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+        <title>QB-Phone</title>
 
-    <!-- CSS File's -->
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/tooltip.css">
-    <link rel="stylesheet" href="./css/phone.css">
-    <link rel="stylesheet" href="./css/twitter.css">
-    <link rel="stylesheet" href="./css/bank.css">
-    <link rel="stylesheet" href="./css/whatsapp.css">
-    <link rel="stylesheet" href="./css/garage.css">
-    <link rel="stylesheet" href="./css/gopro.css">
-    <link rel="stylesheet" href="./css/advertisement.css">
-    <link rel="stylesheet" href="./css/mail.css">
-    <link rel="stylesheet" href="./css/meos.css">
-    <link rel="stylesheet" href="./css/crypto.css">
-    <link rel="stylesheet" href="./css/racing.css">
-    <link rel="stylesheet" href="./css/houses.css">
-    <link rel="stylesheet" href="./css/taxi.css">
-    <link rel="stylesheet" href="./css/gallery.css">
-    <link rel="stylesheet" href="./css/camera.css">
-    <link rel="stylesheet" href="./css/details.css">
-    <link rel="stylesheet" href="./css/casino.css">
-    <link rel="stylesheet" href="./css/ping.css">
-    <link rel="stylesheet" href="./css/calculator.css">
-    <link rel="stylesheet" href="./css/groups.css">
-    <link rel="stylesheet" href="./css/employment.css">
-    <link rel="stylesheet" href="./css/debt.css">
-    <link rel="stylesheet" href="./css/wenmo.css">
-    <link rel="stylesheet" href="./css/documents.css">
-    <link rel="stylesheet" href="./css/lsbn.css">
-    <link rel="stylesheet" href="./css/publicphone.css">
-    <link rel="stylesheet" href="./css/group-chats.css">
+        <!-- CDN Style's -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!-- Bootstrap -->
 
-    <!-- CDN's -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <!-- Bootstrap -->
-    <script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js" integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I=" crossorigin="anonymous"></script> <!-- Color CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!-- Bootstrap -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="./js/jquery.timeago.js"></script>
-</head>
+        <!-- CSS File's -->
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/advertisement.css">
+        <link rel="stylesheet" href="./css/bank.css">
+        <link rel="stylesheet" href="./css/calculator.css">
+        <link rel="stylesheet" href="./css/camera.css">
+        <link rel="stylesheet" href="./css/casino.css">
+        <link rel="stylesheet" href="./css/crypto.css">
+        <link rel="stylesheet" href="./css/debt.css">
+        <link rel="stylesheet" href="./css/details.css">
+        <link rel="stylesheet" href="./css/documents.css">
+        <link rel="stylesheet" href="./css/employment.css">
+        <link rel="stylesheet" href="./css/gallery.css">
+        <link rel="stylesheet" href="./css/garage.css">
+        <link rel="stylesheet" href="./css/gopro.css">
+        <link rel="stylesheet" href="./css/group-chats.css">
+        <link rel="stylesheet" href="./css/groups.css">
+        <link rel="stylesheet" href="./css/houses.css">
+        <link rel="stylesheet" href="./css/lsbn.css">
+        <link rel="stylesheet" href="./css/mail.css">
+        <link rel="stylesheet" href="./css/meos.css">
+        <link rel="stylesheet" href="./css/phone.css">
+        <link rel="stylesheet" href="./css/ping.css">
+        <link rel="stylesheet" href="./css/publicphone.css">
+        <link rel="stylesheet" href="./css/racing.css">
+        <link rel="stylesheet" href="./css/taxi.css">
+        <link rel="stylesheet" href="./css/tooltip.css">
+        <link rel="stylesheet" href="./css/twitter.css">
+        <link rel="stylesheet" href="./css/wenmo.css">
+        <link rel="stylesheet" href="./css/whatsapp.css">
+
+        <!-- CDN Js -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!-- JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <!-- Bootstrap -->
+        <script src="https://code.jquery.com/color/jquery.color-2.2.0.min.js" integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I=" crossorigin="anonymous"></script> <!-- Color CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="./js/jquery.timeago.js"></script>
+    </head>
     <body style="background-color: transparent !important";>
-        <div id="popup">
-            <div class="popupclass">
-                <div id="close"></div>
-            </div>
-        </div>
+        <div id="popup"><div class="popupclass"><div id="close"></div></div></div>
         <div class="container disableSelection">
             <img src="./img/samsung-s10.png" class="phone-frame">
             <div class="phone-container phone-background">
