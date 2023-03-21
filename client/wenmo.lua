@@ -5,7 +5,7 @@ RegisterNUICallback('wenmo_givemoney_toID', function(data)
 end)
 
 RegisterNetEvent('QBCore:Client:OnMoneyChange', function(account, amount, type, reason)
-    if not account == 'bank' then return end
+    if account ~= 'bank' then return end
     local color = type == 'remove' and "#f5a15b" or "#8ee074"
     local amount = type == 'remove' and "- $" .. amount or "+ $" .. amount
     if reason == 'unknown' then reason = false end
