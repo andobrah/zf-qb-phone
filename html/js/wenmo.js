@@ -6,18 +6,18 @@ $(document).on('click', '.wenmo-send-money-btn', function(e){
 
 $(document).on('click', '#wenmo-send-money-ended', function(e){
     e.preventDefault();
-    var ID = $(".wenmo-input-one").val();
-    var Amount = $(".wenmo-input-two").val();
-    var Reason = $(".wenmo-input-three").val();
-    if ((ID && Amount && Reason) != "" && (ID && Amount) >= 1){
+    var id = $(".wenmo-input-one").val();
+    var amount = $(".wenmo-input-two").val();
+    var reason = $(".wenmo-input-three").val();
+    if ((id || amount || reason != '') && (id && amount) >= 1){
         $.post('https://qb-phone/wenmo_givemoney_toID', JSON.stringify({
-            ID: ID,
-            Amount: Amount,
-            Reason: Reason,
+            id: id,
+            amount: amount,
+            reason: reason,
         }));
         
         ClearInputNew()
-        $('#wenmo-box-new-for-give').fadeIn(350);
+        $('#wenmo-box-new-for-give').fadeOut(350);
     }
 });
 
@@ -26,12 +26,17 @@ $(document).ready(function(){
         switch(event.data.action) {
             case "ChangeMoney_Wenmo":
                 var date = new Date();
-                var Times = date.getHours()+":"+date.getMinutes();
-                var AddOption = '<div style="color: '+event.data.Color+';" class="wenmo-form-style-body">'+event.data.Amount+'<div class="wenmo-time-class-body">'+Times+'</div>'+
-                                    '<div style="color: #a8a8a8;">'+event.data.Reason+'</div>'+
-                                '</div>'
+                var hour = date.getHours() + ":" + date.getMinutes();
 
-                    $('.wenmo-list').prepend(AddOption);
+                var AddOption = `<div style="color: ${event.data.color}" class="wenmo-form-style-body">${event.data.amount}<div class="wenmo-time-class-body">${hour}</div>`;
+                if (event.data.reason != false) {
+                    AddOption += `<div class="wenmo-reason-class-body">${event.data.reason}</div>`
+                };
+                AddOption += `</div>`
+
+                console.log(AddOption)
+
+                $('.wenmo-list').prepend(AddOption);
             break;
         }
     })
