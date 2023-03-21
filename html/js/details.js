@@ -8,8 +8,9 @@ function LoadPlayerMoneys(){
     var PlayerBankMoney = QB.Phone.Data.PlayerData.money.bank;
     var PlayerCashMoney = QB.Phone.Data.PlayerData.money.cash;
     var PlayerStateID = QB.Phone.Data.PlayerData.citizenid;
+    var formatedPhone = PlayerPhoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
 
-    $(".details-phone").html(PlayerPhoneNumber)
+    $(".details-phone").html(formatedPhone)
     $(".details-bankserial").html(PlayerBankAcc)
     $(".details-bankmoney").html("$"+numberWithCommas(PlayerBankMoney))
     $(".details-cashmoney").html("$"+numberWithCommas(PlayerCashMoney))
