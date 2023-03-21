@@ -366,7 +366,7 @@ $(document).on('click', '.phone-tab-button', function(event){
 });
 
 QB.Phone.Functions.Open = function(data) {
-    QB.Phone.Animations.BottomSlideUp('.container', 500, -6.6);
+    QB.Phone.Animations.BottomSlideUp('.container', 500, -5);
     QB.Phone.Notifications.LoadTweets(data.Tweets, data.hasVPN);
     QB.Phone.Data.IsOpen = true;
 }
