@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'Maintainer: LeZach#3819 | Original Editor: FjamZoo#0001 & MannyOnBrazzers#6826'
 description 'A No Pixel inspired edit of QBCore\'s Phone.'
-version '0.1.0'
+version '0.1.1'
 
 ui_page 'html/index.html'
 
