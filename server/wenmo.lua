@@ -5,7 +5,7 @@ RegisterNetEvent('qb-phone:server:wenmo_givemoney_toID', function(data)
     local amount = tonumber(data.amount)
     local reason = data.reason
 
-    if src == tonumber(data.id) then return end
+    if src == tonumber(data.id) then PhoneNotify(src, 'Wenmo', 'You can\'t send yourself money', "fas fa-exclamation-circle", "#e76f51") return end
     if not Target then return PhoneNotify(src, 'Wenmo', 'The recipient is not available', 'error', 'fas fa-exclamation-circle', '#e76f51') end
 
     local txt = "Wenmo: " .. reason
