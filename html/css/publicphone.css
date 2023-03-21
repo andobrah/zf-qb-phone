@@ -49,7 +49,6 @@
     border-bottom: 0.1vh solid rgba(245, 245, 245, 0.68);
     background: none;
     outline: none;
-    font-family: 'Fira Code', monospace;
     width: 100%;
     /* border-radius: 0.5vh; */
     padding: 0.6vh 0.3vh;
@@ -71,7 +70,6 @@
     left: 65%;
     text-align: center;
     font-weight: bold;
-    font-family: 'Fira Code', monospace;
     padding: 0.8vh;
     color: black;
 }

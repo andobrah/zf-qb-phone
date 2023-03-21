@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
-
 .crypto-app {
     display: none;
     height: 100%;
@@ -20,7 +18,6 @@
     position: absolute;
     top: 4.7vh;
     left: 3.0vh;
-    font-family: 'Roboto', sans-serif;
     font-size: 1.2vh;
     color: #FFFFFF;
 }
@@ -118,7 +115,6 @@
 }
 
 /* Click Block CSS */
-
 .crypto-abbrev {
     padding: 3px 18px;
     padding-left: 0vh;
@@ -183,7 +179,6 @@
     transition: 0.25s;
     border-radius: 4px;
     color: black;
-    font-family: 'Roboto', sans-serif;
     font-size: 0.85vh;
     margin-bottom: 4%;
 }
