@@ -21,7 +21,6 @@ local function getJobs(cid)
 end exports('getJobs', getJobs)
 
 local FirstStart = false
-
 CreateThread(function()
     ---- Convertion Tool I guess LOL ----
     if not FirstStart then return end
@@ -86,15 +85,7 @@ end)
 
 local function notifyPlayer(src, message)
     if not src or not message then return end
-
-    TriggerClientEvent('qb-phone:client:CustomNotification', src,
-        "Employment",
-        message,
-        "fas fa-network-wired",
-        "#FFFC00",
-        10000
-    )
-
+    TriggerClientEvent('qb-phone:client:CustomNotification', src, "Employment", message, "fas fa-network-wired", "#FFFC00", 10000)
 end
 
 -- ** Fire someone in the business the player firing someone MUST be boss ** --
@@ -143,18 +134,15 @@ RegisterNetEvent('qb-phone:server:fireUser', function(Job, sCID)
     end
 end)
 
----- ** Can give any employee x amount of money out of the bank account, must be boss ** ----
+-- ** Can give any employee x amount of money out of the bank account, must be boss ** ----
 RegisterNetEvent('qb-phone:server:SendEmploymentPayment', function(Job, CID, amount)
     local src = source
     if not Job or not CID or not amount or not CachedJobs[Job] or Job == "unemployed" then return end
-    local Player = QBCore.Functions.GetPlayer(src)
 
+    local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
 
     local srcCID = Player.PlayerData.citizenid
-
-    --if srcCID == CID then return end
-
     if not CachedJobs[Job].employees[srcCID].grade then return end
 
     local grade = tostring(CachedJobs[Job].employees[srcCID].grade)
@@ -166,7 +154,7 @@ RegisterNetEvent('qb-phone:server:SendEmploymentPayment', function(Job, CID, amo
     local amt = tonumber(amount)
     if Config.RenewedBanking then
         if not exports['Renewed-Banking']:removeAccountMoney(Job, amt) then return notifyPlayer(src, "Insufficient Funds...") end
-        local title = QBCore.Shared.Jobs[Job].label.." // Employee Payment"
+        local title = QBCore.Shared.Jobs[Job].label .. " // Employee Payment"
 
         ---- Business Account ----
         local BusinessName = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
@@ -178,10 +166,10 @@ RegisterNetEvent('qb-phone:server:SendEmploymentPayment', function(Job, CID, amo
     else
         if not exports['qb-management']:RemoveMoney(Job, amt) then return notifyPlayer(src, "Insufficient Funds...") end
     end
-    Player.Functions.AddMoney('bank', amt)
+    Reciever.Functions.AddMoney('bank', amt)
 end)
 
----- ** Player can hire someone aslong as they are boss within the group
+-- ** Player can hire someone aslong as they are boss within the group
 RegisterNetEvent('qb-phone:server:hireUser', function(Job, id, grade)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -215,8 +203,7 @@ RegisterNetEvent('qb-phone:server:hireUser', function(Job, id, grade)
     end
 end)
 
----- ** Handles the changing of someone grade within the job ** ----
-
+-- ** Handles the changing of someone grade within the job ** ----
 RegisterNetEvent('qb-phone:server:gradesHandler', function(Job, CID, grade)
     local src = source
     local srcPlayer = QBCore.Functions.GetPlayer(src)
@@ -252,7 +239,6 @@ RegisterNetEvent('qb-phone:server:gradesHandler', function(Job, CID, grade)
     end
 end)
 
-
 RegisterNetEvent('qb-phone:server:clockOnDuty', function(Job)
     local src = source
     if not Job then return end
@@ -276,7 +262,7 @@ RegisterNetEvent('qb-phone:server:clockOnDuty', function(Job)
     end
 end)
 
----- Gets the client side cache for players ----
+-- ** Gets the client side cache for players ----
 QBCore.Functions.CreateCallback("qb-phone:server:GetMyJobs", function(source, cb)
     if FirstStart then return end
     local Player = QBCore.Functions.GetPlayer(source)
@@ -298,9 +284,8 @@ QBCore.Functions.CreateCallback("qb-phone:server:GetMyJobs", function(source, cb
     cb(employees, CachedPlayers[CID])
 end)
 
----- Functions and Exports people can use across script to hire and fire people to sync ----
-
----- Use this to hire anyone through scripts DO NOT use this through exploitable events since its meant to not be the securest ----
+-- Functions and Exports people can use across script to hire and fire people to sync ----
+-- ** Use this to hire anyone through scripts DO NOT use this through exploitable events since its meant to not be the securest ----
 local function hireUser(Job, CID, grade)
     if not Job or not CID or not CachedJobs[Job] or Job == "unemployed" then return end
     local Player = QBCore.Functions.GetPlayerByCitizenId(CID)
@@ -325,7 +310,7 @@ local function hireUser(Job, CID, grade)
     TriggerClientEvent("qb-phone:client:JobsHandler", -1, Job, CachedJobs[Job].employees)
 end exports("hireUser", hireUser)
 
----- Use this to fire anyone through scripts DO NOT use this through exploitable events since its meant to not be the securest ----
+-- ** Use this to fire anyone through scripts DO NOT use this through exploitable events since its meant to not be the securest ----
 local function fireUser(Job, CID)
     if not CachedJobs[Job] then return print("Not Cached job") end
     if not CachedJobs[Job].employees[CID] then return print("Player is not employed LOL") end
@@ -352,8 +337,7 @@ local function fireUser(Job, CID)
 end exports("fireUser", fireUser)
 
 local bills = {}
-
----- ** Invoices // Charging People ** ----
+-- ** Invoices // Charging People ** ----
 RegisterNetEvent('qb-phone:server:ChargeCustomer', function(id, amount, notes, job)
     if not id or not amount or not job then return end
     local src = source

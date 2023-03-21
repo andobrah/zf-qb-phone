@@ -29,7 +29,6 @@ end)
 
 RegisterNUICallback('SendEmployeePayment', function(data, cb)
     if not data.job or not data.cid or not data.amount then return end
-
     TriggerServerEvent('qb-phone:server:SendEmploymentPayment', data.job, data.cid, data.amount)
     cb("ok")
 end)
