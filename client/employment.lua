@@ -1,6 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
-
 -- Use This Callback Whenever You Need To Get A the information --
 local cachedEmployees = {}
 local myJobs = {}

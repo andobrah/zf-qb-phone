@@ -1,5 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 local isGroupLeader = false
 local inJob = false
 local GroupID = 0

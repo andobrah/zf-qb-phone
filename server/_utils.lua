@@ -1,5 +1,10 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
+RegisterNetEvent('QBCore:Server:UpdateObject', function()
+	if source ~= '' then return false end
+	QBCore = exports['qb-core']:GetCoreObject()
+end)
+
 function PhoneNotify(source, title, message, icon, color, timeout)
     TriggerClientEvent('qb-phone:client:CustomNotification', source, title, message, icon, color, timeout or 5000)
 end

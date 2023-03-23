@@ -1,7 +1,4 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 -- NUI Callback
-
 RegisterNUICallback('CasinoAddBet', function(data, cb)
     TriggerServerEvent('qb-phone:server:CasinoAddBet', data)
     cb("ok")
