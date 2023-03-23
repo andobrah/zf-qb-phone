@@ -136,3 +136,12 @@ This is pretty much everything to do with setting up the phone. If you encounter
 - <b>Kakarot</b>
 - <b>amir_expert</b>
 - <b>Booya</b>
+
+
+# COLOR CODE
+- Primary: #
+- Secondary: #
+- Success: #70c1b3
+- Error: #f25f5c
+- Warning: #ffe066
+- Info: #247ba0
