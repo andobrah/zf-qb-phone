@@ -1,16 +1,6 @@
-local QBCore = exports['qb-core']:GetCoreObject()
 local GeneratedPlates = {}
 
 -- Functions
-
-local function escape_sqli(source)
-    local replacements = {
-        ['"'] = '\\"',
-        ["'"] = "\\'"
-    }
-    return source:gsub("['\"]", replacements)
-end
-
 local function GenerateOwnerName()
     local names = {
         [1] = {
@@ -137,8 +127,55 @@ local function GenerateOwnerName()
     return names[math.random(1, #names)]
 end
 
--- Events
 
+-- Events
+RegisterNetEvent('qb-phone:server:ClientScanPlate', function(plate)
+    local src = source
+    local vehicleData = {}
+    if plate then
+        local result = exports.oxmysql:executeSync('SELECT * FROM player_vehicles WHERE plate = ?', {plate})
+        if result[1] then
+            local player = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {result[1].citizenid})
+            local charinfo = json.decode(player[1].charinfo)
+            vehicleData = {
+                plate = plate,
+                status = true,
+                owner = charinfo.firstname .. " " .. charinfo.lastname,
+                citizenid = result[1].citizenid
+            }
+        elseif GeneratedPlates and GeneratedPlates[plate] then
+            vehicleData = GeneratedPlates[plate]
+        else
+            local ownerInfo = GenerateOwnerName()
+            GeneratedPlates[plate] = {
+                plate = plate,
+                status = true,
+                owner = ownerInfo.name,
+                citizenid = ownerInfo.citizenid
+            }
+            vehicleData = {
+                plate = plate,
+                status = true,
+                owner = ownerInfo.name,
+                citizenid = ownerInfo.citizenid
+            }
+        end
+    end
+
+    TriggerClientEvent('chat:addMessage', src, {
+        color = { 255, 0, 0},
+        multiline = true,
+        args = {"Vehicle: ", vehicleData.plate,}
+    })
+    TriggerClientEvent('chat:addMessage', src, {
+        color = { 255, 0, 0},
+        multiline = true,
+        args = {"Owner: ", vehicleData.owner,}
+    })
+end)
+
+
+-- Callbacks
 QBCore.Functions.CreateCallback('qb-phone:server:GetVehicleSearchResults', function(_, cb, search)
     local newSearch = escape_sqli(search)
     local searchData = {}
@@ -225,49 +262,4 @@ QBCore.Functions.CreateCallback('qb-phone:server:ScanPlate', function(source, cb
         TriggerClientEvent('QBCore:Notify', src, 'No Vehicle Nearby', "error")
         cb(nil)
     end
-end)
-
-RegisterNetEvent('qb-phone:server:ClientScanPlate', function(plate)
-    local src = source
-    local vehicleData = {}
-    if plate then
-        local result = exports.oxmysql:executeSync('SELECT * FROM player_vehicles WHERE plate = ?', {plate})
-        if result[1] then
-            local player = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {result[1].citizenid})
-            local charinfo = json.decode(player[1].charinfo)
-            vehicleData = {
-                plate = plate,
-                status = true,
-                owner = charinfo.firstname .. " " .. charinfo.lastname,
-                citizenid = result[1].citizenid
-            }
-        elseif GeneratedPlates and GeneratedPlates[plate] then
-            vehicleData = GeneratedPlates[plate]
-        else
-            local ownerInfo = GenerateOwnerName()
-            GeneratedPlates[plate] = {
-                plate = plate,
-                status = true,
-                owner = ownerInfo.name,
-                citizenid = ownerInfo.citizenid
-            }
-            vehicleData = {
-                plate = plate,
-                status = true,
-                owner = ownerInfo.name,
-                citizenid = ownerInfo.citizenid
-            }
-        end
-    end
-
-    TriggerClientEvent('chat:addMessage', src, {
-        color = { 255, 0, 0},
-        multiline = true,
-        args = {"Vehicle: ", vehicleData.plate,}
-    })
-    TriggerClientEvent('chat:addMessage', src, {
-        color = { 255, 0, 0},
-        multiline = true,
-        args = {"Owner: ", vehicleData.owner,}
-    })
 end)

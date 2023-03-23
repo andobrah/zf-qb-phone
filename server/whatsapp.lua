@@ -1,9 +1,7 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
-
+-- Events
 RegisterNetEvent('qb-phone:server:UpdateMessages', function(ChatMessages, ChatNumber)
     if not ChatNumber or not ChatMessages then return end
-
+    
     local src = source
     local SenderData = QBCore.Functions.GetPlayer(src)
     local TargetData = QBCore.Functions.GetPlayerByPhone(ChatNumber)

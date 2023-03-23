@@ -1,15 +1,15 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 local CasinoTable = {}
 local BetNumber = 0
+local CasinoBetList = {}
+local casino_status = true
+
+
+-- Events
 RegisterNetEvent('qb-phone:server:CasinoAddBet', function(data)
     BetNumber += 1
     CasinoTable[BetNumber] = {['Name'] = data.name, ['chanse'] = data.chanse, ['id'] = BetNumber}
     TriggerClientEvent('qb-phone:client:addbetForAll', -1, CasinoTable)
 end)
-
-local CasinoBetList = {}
-local casino_status = true
 
 RegisterNetEvent('qb-phone:server:BettingAddToTable', function(data)
     local src = source
@@ -17,18 +17,18 @@ RegisterNetEvent('qb-phone:server:BettingAddToTable', function(data)
     local amount = tonumber(data.amount)
     local CSN = Player.PlayerData.citizenid
     if casino_status then
-        if Player.PlayerData.money.bank >= amount then
+        if Player.Functions.GetMoney('bank') >= amount then
             if not CasinoBetList[CSN] then
                 Player.Functions.RemoveMoney('bank', amount, "casino betting")
                 CasinoBetList[CSN] = {['csn'] = CSN, ['amount'] = amount, ['player'] = data.player, ['chanse'] = data.chanse, ['id'] = data.id}
             else
-                TriggerClientEvent('QBCore:Notify', src, "You are already betting...", "error")
+                PhoneNotify(src, 'Casino', 'You are already betting...', 'fas fa-info-circle', '#f25f5c')
             end
         else
-            TriggerClientEvent('QBCore:Notify', src, "You do not have enough money!", "error")
+            PhoneNotify(src, 'Casino', 'You do not have enough money!', 'fas fa-exclamation-circle', '#f25f5c')
         end
     else
-        TriggerClientEvent('QBCore:Notify', src, "Betting is not active...", "error")
+        PhoneNotify(src, 'Casino', 'Betting is not active...', 'fas fa-exclamation-circle', '#f25f5c')
     end
 end)
 
@@ -38,26 +38,17 @@ RegisterNetEvent('qb-phone:server:DeleteAndClearTable', function()
     CasinoBetList = {}
     BetNumber = 0
     TriggerClientEvent('qb-phone:client:addbetForAll', -1, CasinoTable)
-    TriggerClientEvent('QBCore:Notify', src, "Done", "primary")
+    PhoneNotify(src, 'Casino', 'Done...', 'fas fa-info-circle', '#247ba0')
 end)
-
-QBCore.Functions.CreateCallback('qb-phone:server:CheckHasBetTable', function(_, cb)
-    cb(CasinoTable)
-end)
-
 
 RegisterNetEvent('qb-phone:server:casino_status', function()
     casino_status = not casino_status
 end)
 
-QBCore.Functions.CreateCallback('qb-phone:server:CheckHasBetStatus', function(_, cb)
-    cb(casino_status)
-end)
-
 RegisterNetEvent('qb-phone:server:WineridCasino', function(data)
-    local Winer = data.id
+    local winner = data.id
     for _, v in pairs(CasinoBetList) do
-        if v.id == Winer then
+        if v.id == winner then
             local OtherPly = QBCore.Functions.GetPlayerByCitizenId(v.csn)
             if OtherPly then
                 local amount = v.amount * v.chanse
@@ -65,4 +56,14 @@ RegisterNetEvent('qb-phone:server:WineridCasino', function(data)
             end
         end
     end
+end)
+
+
+-- Callbacks
+QBCore.Functions.CreateCallback('qb-phone:server:CheckHasBetTable', function(_, cb)
+    cb(CasinoTable)
+end)
+
+QBCore.Functions.CreateCallback('qb-phone:server:CheckHasBetStatus', function(_, cb)
+    cb(casino_status)
 end)

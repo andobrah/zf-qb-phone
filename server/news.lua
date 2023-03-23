@@ -1,7 +1,7 @@
 local LSBNTable = {}
 local LSBNTableID = 0
 
-
+-- Events
 RegisterNetEvent('qb-phone:server:Send_lsbn_ToChat', function(data)
     LSBNTableID = LSBNTableID + 1
     if data.Type == "Text" then
@@ -9,11 +9,8 @@ RegisterNetEvent('qb-phone:server:Send_lsbn_ToChat', function(data)
     elseif data.Type == "Image" then
         LSBNTable[LSBNTableID] = {['Text'] = data.Text, ['Image'] = data.Image, ['ID'] = LSBNTableID, ['Type'] = data.Type, ['Time'] = data.Time,}
     end
-    local Tables = {
-        {
-            ['Text'] = data.Text, ['Image'] = data.Image, ['ID'] = LSBNTableID, ['Type'] = data.Type, ['Time'] = data.Time,
-        },
-    }
+
+    local Tables = {{['Text'] = data.Text, ['Image'] = data.Image, ['ID'] = LSBNTableID, ['Type'] = data.Type, ['Time'] = data.Time}}
     TriggerClientEvent('qb-phone:LSBN-reafy-for-add', -1, Tables, true, data.Text)
 end)
 

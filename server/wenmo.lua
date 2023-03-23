@@ -1,3 +1,4 @@
+-- Events
 RegisterNetEvent('qb-phone:server:wenmo_givemoney_toID', function(data)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -15,13 +16,12 @@ RegisterNetEvent('qb-phone:server:wenmo_givemoney_toID', function(data)
 
         if Config.RenewedBanking then
             local pCitizen = Player.PlayerData.citizenid
-            local name = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
-
+            local pName = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
             local tCitizen = Target.PlayerData.citizenid
-            local name2 = ("%s %s"):format(Target.PlayerData.charinfo.firstname, Target.PlayerData.charinfo.lastname)
+            local tName = ("%s %s"):format(Target.PlayerData.charinfo.firstname, Target.PlayerData.charinfo.lastname)
 
-            exports['Renewed-Banking']:handleTransaction(pCitizen, "Wenmo Transaction", amount, txt, name2, name, "withdraw")
-            exports['Renewed-Banking']:handleTransaction(tCitizen, "Wenmo Transaction", amount, txt, name, name2, "deposit")
+            local transaction = exports['Renewed-Banking']:handleTransaction(pCitizen, "Wenmo Transaction", amount, txt, tName, pName, "withdraw")
+            exports['Renewed-Banking']:handleTransaction(tCitizen, "Wenmo Transaction", amount, txt, pName, tName, "deposit", transaction.trans_id)
         end
     else
         PhoneNotify(src, 'Wenmo', 'You don\'t have enough money', "fas fa-exclamation-circle", "#e76f51")

@@ -1,4 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
 Adverts = {}
 
 local function GetAdvertFromNumb(src)
@@ -49,6 +48,5 @@ RegisterNetEvent('qb-phone:server:flagAdvert', function(number)
     local Player = QBCore.Functions.GetPlayerByPhone(number)
     local citizenid = Player.PlayerData.citizenid
     local name = Player.PlayerData.charinfo.firstname..' '..Player.PlayerData.charinfo.lastname
-    -- Add some type of log here for admins to keep track of flagged posts
-    TriggerClientEvent('QBCore:Notify', src, 'Post by '..name.. ' ['..citizenid..'] has been flagged', 'error')
+    PhoneNotify(src, 'Flag', 'Post by '..name.. ' ['..citizenid..'] has been flagged', 'fas fa-exclamation-circle', '#f25f5c')
 end)
