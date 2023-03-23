@@ -8,8 +8,8 @@ RegisterNetEvent("qb-phone:server:sendPing", function(id)
 
     if not Receiver then PhoneNotify(src, 'Ping', 'No receiver found with that id.', 'fas fa-exclamation-circle', '#f25f5c') return end
 
-    local info = { type = 'ping', Other = tonumber(id), Player = src, Name = name, OtherName = Other.PlayerData.charinfo.firstname }
-    if Player.PlayerData.citizenid ~= Other.PlayerData.citizenid then
+    local info = { type = 'ping', Other = tonumber(id), Player = src, Name = name, OtherName = Receiver.PlayerData.charinfo.firstname }
+    if Player.PlayerData.citizenid ~= Receiver.PlayerData.citizenid then
         TriggerClientEvent("qb-phone:client:sendNotificationPing", tonumber(id), info)
         PhoneNotify(src, 'Ping', 'Request Sent.', 'fas fa-check-circle', '#70c1b3')
     else

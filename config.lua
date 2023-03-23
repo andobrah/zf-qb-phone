@@ -1,7 +1,12 @@
 Config = Config or {}
 
--- Configs for Payment and Banking
+Config.Exports = {
+    Inventory = 'qb-inventory',
+}
 
+
+
+-- Configs for Payment and Banking
 Config.RenewedBanking = false -- Either put this to true or false if you use Renewed Banking or not
 Config.RenewedFinances = false -- Either put this to true or false if you use Renewed Finances or not
 Config.RenewedCameras = false -- Either put this to true or false if you use Renewed Cameras or not
