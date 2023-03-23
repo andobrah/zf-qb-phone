@@ -10,7 +10,7 @@ RegisterNetEvent('qb-phone:server:wenmo_givemoney_toID', function(data)
     if not Target then return PhoneNotify(src, 'Wenmo', 'The recipient is not available', 'error', 'fas fa-exclamation-circle', '#e76f51') end
 
     local txt = "Wenmo: " .. reason
-    if Player.PlayerData.money.bank >= amount then
+    if Player.Functions.GetMoney('bank') >= amount then
         Player.Functions.RemoveMoney('bank', amount, txt)
         Target.Functions.AddMoney('bank', amount, txt)
 

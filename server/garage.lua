@@ -23,7 +23,7 @@ RegisterNetEvent('qb-phone:server:sellVehicle', function(data, Seller, type)
     local SellerData = QBCore.Functions.GetPlayerByCitizenId(Seller.PlayerData.citizenid)
 
     if type == 'accepted' then
-        if Player.PlayerData.money.bank and Player.PlayerData.money.bank >= tonumber(data.price) then
+        if Player.Functions.GetMoney('bank') and Player.Functions.GetMoney('bank') >= tonumber(data.price) then
             Player.Functions.RemoveMoney('bank', data.price, "vehicle sale")
             SellerData.Functions.AddMoney('bank', data.price)            
             PhoneNotify(src, 'Vehicle Sale', 'You purchased the vehicle for $' .. data.price, 'fas fa-check-circle', '#70c1b3')
