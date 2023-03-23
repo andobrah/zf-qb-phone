@@ -16,8 +16,9 @@ local function RemovePlayerFromGroup(src, groupID, disconnected)
             EmploymentGroup[groupID].Users -= 1
             Players[src] = false
             pNotifyGroup(groupID, "Job Center", v.name.." Has left the group", "fas fa-users", "#FFBF00", 7500)
+            TriggerClientEvent('qb-phone:client:UpdateGroupId', src, 0)
             TriggerClientEvent('qb-phone:client:RefreshGroupsApp', -1, EmploymentGroup)
-            if not disconnected then TriggerClientEvent("QBCore:Notify", src, "You have left the group", "primary") end
+            if not disconnected then PhoneNotify(src, 'Group', 'You have left the group', 'fas fa-info-circle', '#247ba0') end
 
             if EmploymentGroup[groupID].Users <= 0 then DestroyGroup(groupID) end
             return
@@ -101,12 +102,30 @@ local function GetGroupLeader(groupID)
     return EmploymentGroup[groupID].leader
 end exports("GetGroupLeader", GetGroupLeader)
 
+function GroupEvent(groupID, event, args)
+    if not groupID then return print("GroupEvent was sent an invalid groupID :"..groupID) end
+    if not event then return print("no valid event was passed to GroupEvent") end
+    local members = getGroupMembers(groupID)
+    if members and #members > 0 then
+        for i = 1, #members do
+            if members[i] then
+                if args ~= nil then
+                    TriggerClientEvent(event, members[i], table.unpack(args))
+                else 
+                    TriggerClientEvent(event, members[i])
+                end
+            end
+        end
+    end
+end exports("GroupEvent", GroupEvent)
+
 local function DestroyGroup(groupID)
     if not EmploymentGroup[groupID] then return print("DestroyGroup was sent an invalid groupID :"..groupID) end
     local members = getGroupMembers(groupID)
     if members and #members > 0 then
         for i = 1, #members do
             if members[i] then
+                TriggerClientEvent('qb-phone:client:UpdateGroupId', members[i], 0)
                 Players[members[i]] = false
             end
         end
@@ -186,13 +205,14 @@ local function CreateGroup(src, name, password)
         ScriptCreated = true,
     }
 
+    TriggerClientEvent('qb-phone:client:UpdateGroupId', src, id)
     TriggerClientEvent('qb-phone:client:RefreshGroupsApp', -1, EmploymentGroup)
     return id
 end exports('CreateGroup', CreateGroup)
 
 
 -- Events
-RegisterNetEvent("qb-phone:server:employment_checkJobStauts", function ()
+RegisterNetEvent("qb-phone:server:employment_checkJobStauts", function()
     local src = source
     local checkStatus = GetGroupByMembers(src)
     if checkStatus then
@@ -205,7 +225,7 @@ end)
 RegisterNetEvent("qb-phone:server:jobcenter_CreateJobGroup", function(data)
     local src = source
     local player = QBCore.Functions.GetPlayer(src)
-    if Players[src] then TriggerClientEvent('QBCore:Notify', src, "You have already created a group", "error") return end
+    if Players[src] then PhoneNotify(src, 'Group', 'You have already created a group.', 'fas fa-exclamation-circle', '#f25f5c') return end
     if not data or not data.pass or not data.name then return end
     Players[src] = true
     local ID = #EmploymentGroup+1
@@ -222,6 +242,7 @@ RegisterNetEvent("qb-phone:server:jobcenter_CreateJobGroup", function(data)
         stage = {},
     }
 
+    TriggerClientEvent('qb-phone:client:UpdateGroupId', src, ID)
     TriggerClientEvent('qb-phone:client:RefreshGroupsApp', -1, EmploymentGroup)
 end)
 
@@ -239,13 +260,14 @@ RegisterNetEvent('qb-phone:server:jobcenter_JoinTheGroup', function(data)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 
-    if Players[src] then return TriggerClientEvent('QBCore:Notify', src, "You are already a part of a group!", "success") end
+    if Players[src] then PhoneNotify(src, 'Group', 'You are already a part of a group!', 'fas fa-exclamation-circle', '#70c1b3') return end
 
     local name = GetPlayerCharName(src)
     pNotifyGroup(data.id, "Job Center", name.." Has joined the group", "fas fa-users", "#FFBF00", 7500)
     EmploymentGroup[data.id].members[#EmploymentGroup[data.id].members+1] = {name = name, CID = Player.PlayerData.citizenid, Player = src}
     EmploymentGroup[data.id].Users += 1
     Players[src] = true
+    TriggerClientEvent('qb-phone:client:UpdateGroupId', src, data.id)
     PhoneNotify(src, 'Group', 'You joined the group', 'fas fa-door-open', '#70c1b3')
     TriggerClientEvent('qb-phone:client:RefreshGroupsApp', -1, EmploymentGroup)
 end)
