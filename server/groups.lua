@@ -164,10 +164,10 @@ local function updateJobStage(groupID, status, stage, val)
     local m = getGroupMembers(groupID)
     if not m then return end
     for i=1, #m do
-	if m[i] then
-	    TriggerClientEvent("qb-phone:client:AddGroupStage", m[i], status, EmploymentGroup[groupID].stage)
-	    TriggerClientEvent('qb-phone:client:RefreshGroupsApp', m[i], EmploymentGroup, true)
-	end
+        if m[i] then
+            TriggerClientEvent("qb-phone:client:AddGroupStage", m[i], status, EmploymentGroup[groupID].stage)
+            TriggerEvent('qb-phone:group:stageUpdated', groupID, status, EmploymentGroup[groupID].stage, stage)
+        end
     end
 end exports('updateJobStage', updateJobStage)
 
