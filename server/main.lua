@@ -1,6 +1,5 @@
 local Hashtags = {} -- Located in the Twitter File as well ??
 local Calls = {}
-local WebHook = Config.Webhook
 
 
 -- Functions
@@ -236,8 +235,4 @@ QBCore.Functions.CreateCallback('qb-phone:server:FetchResult', function(_, cb, i
     else
         cb(nil)
     end
-end)
-
-QBCore.Functions.CreateCallback("qb-phone:server:GetWebhook",function(_, cb)
-	cb(WebHook)
 end)

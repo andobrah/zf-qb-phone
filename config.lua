@@ -1,10 +1,9 @@
 Config = Config or {}
 
 Config.Exports = {
+    Core = 'qb-core',
     Inventory = 'qb-inventory',
 }
-
-
 
 -- Configs for Payment and Banking
 Config.RenewedBanking = false -- Either put this to true or false if you use Renewed Banking or not
@@ -14,9 +13,6 @@ Config.RenewedCameras = false -- Either put this to true or false if you use Ren
 Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
     mechanic = 0.10
 }
-
--- Web hook for camera ( NOT GO PRO )
-Config.Webhook = ''
 
 -- Item name for pings app ( Having a VPN sends an anonymous ping, else sends the players name)
 Config.VPNItem = 'vpn'
@@ -46,6 +42,7 @@ Config.AllowWalking = false -- Allow walking and driving with phone out
 
 Config.PhoneApplications = {
     ["details"] = {
+        enabled = true,
         app = "details",
         color = "#5db9fc",
         color2 = "#008eff",
@@ -59,6 +56,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["contacts"] = {
+        enabled = true,
         app = "contacts",
         color = "#345b7a",
         color2 = "#122445",
@@ -72,6 +70,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["phone"] = {
+        enabled = true,
         app = "phone",
         color = "#51da80",
         color2 = "#009436",
@@ -85,6 +84,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["whatsapp"] = {
+        enabled = true,
         app = "whatsapp",
         color = "#8bfc76",
         color2 = "#18d016",
@@ -98,6 +98,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["ping"] = {
+        enabled = true,
         app = "ping",
         color = "#6d10f5",
         color2 = "#4b67ef",
@@ -111,6 +112,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["mail"] = {
+        enabled = true,
         app = "mail",
         color = "#009ee5",
         color2 = "#87d9e7",
@@ -123,6 +125,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["advert"] = {
+        enabled = true,
         app = "advert",
         color = "#ffc900",
         color2 = "#f7c816",
@@ -135,6 +138,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["twitter"] = {
+        enabled = true,
         app = "twitter",
         color = "#151515",
         color2 = "#161616",
@@ -148,6 +152,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["garage"] = {
+        enabled = true,
         app = "garage",
         color = "#ff8077",
         color2 = "#bb345d",
@@ -160,6 +165,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["debt"] = {
+        enabled = true,
         app = "debt",
         color = "#fdfeff",
         color2 = "#d5e6fa",
@@ -171,6 +177,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["wenmo"] = {
+        enabled = true,
         app = "wenmo",
         color = "#151515",
         color2 = "#161616",
@@ -182,6 +189,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["documents"] = {
+        enabled = true,
         app = "documents",
         color = "#f15ac1",
         color2 = "#aa4edd",
@@ -194,6 +202,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["houses"] = {
+        enabled = true,
         app = "houses",
         color = "#42a042",
         color2 = "#3f9e4a",
@@ -206,6 +215,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["crypto"] = {
+        enabled = true,
         app = "crypto",
         color = "#000000",
         color2 = "#000000",
@@ -218,6 +228,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["jobcenter"] = {
+        enabled = true,
         app = "jobcenter",
         color = "#151515",
         color2 = "#161616",
@@ -230,6 +241,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["employment"] = {
+        enabled = true,
         app = "employment",
         color = "#151515",
         color2 = "#161616",
@@ -241,6 +253,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["lsbn"] = {
+        enabled = true,
         app = "lsbn",
         color = "#151515",
         color2 = "#161616",
@@ -252,6 +265,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["taxi"] = {
+        enabled = true,
         app = "taxi",
         color = "#c6c900",
         color2 = "#abad00",
@@ -265,6 +279,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["casino"] = {
+        enabled = true,
         app = "casino",
         color = "#000100",
         color2 = "#000100",
@@ -278,6 +293,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["calculator"] = {
+        enabled = true,
         app = "calculator",
         color = "#c94001",
         color2 = "#9c3100",
@@ -291,6 +307,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["gallery"] = {
+        enabled = true,
         app = "gallery",
         color = "#189ec0",
         color2 = "#14819c",
@@ -304,6 +321,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["racing"] = {
+        enabled = true,
         app = "racing",
         color = "#353b48",
         color2 = "#242830",
@@ -316,6 +334,7 @@ Config.PhoneApplications = {
         Alerts = 0,
     },
     ["bank"] = {
+        enabled = true,
         app = "bank",
         color = "#9c88ff",
         color2 = "#8070d5",
@@ -327,20 +346,8 @@ Config.PhoneApplications = {
         slot = 23,
         Alerts = 0,
     },
-    ["gopro"] = {
-        app = "gopro",
-        color = "#008FFF",
-        color2 = "#008FFF",
-        icon = "fas fa-camera",
-        tooltipText = "camera",
-        tooltipPos = "top",
-        style = "padding-right: .08vh; font-size: 3.3vh";
-        job = false,
-        blockedjobs = {},
-        slot = 24,
-        Alerts = 0,
-    },
     ["group-chats"] = {
+        enabled = true,
         app = "group-chats",
         color = "#7289da",
         color2 = "#7289da",
@@ -350,10 +357,11 @@ Config.PhoneApplications = {
         style = "padding-right: .08vh; font-size: 3.3vh";
         job = false,
         blockedjobs = {},
-        slot = 25,
+        slot = 24,
         Alerts = 0,
     },
     ["meos"] = {
+        enabled = true,
         app = "meos",
         color = "#004682",
         color2 = "#00325c",
@@ -361,13 +369,26 @@ Config.PhoneApplications = {
         tooltipText = "MDT",
         job = "police",
         blockedjobs = {},
+        slot = 25,
+        Alerts = 0,
+    },
+    ["gopro"] = {
+        enabled = Config.RenewedCameras,
+        app = "gopro",
+        color = "#008FFF",
+        color2 = "#008FFF",
+        icon = "fas fa-camera",
+        tooltipText = "Camera",
+        tooltipPos = "top",
+        style = "padding-right: .08vh; font-size: 3.3vh";
+        job = false,
+        blockedjobs = {},
         slot = 26,
         Alerts = 0,
     },
 }
 
 Config.MaxSlots = 28
-
 Config.JobCenter = {
     [1] = {
         job = "unemployed",

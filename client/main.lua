@@ -186,16 +186,29 @@ local function LoadPhone()
             PhoneData.ChatRooms = pData.ChatRooms
         end
 
+        local TempApplications = {}
+        for name,app in pairs(Config.PhoneApplications) do
+            TempApplications[app.slot] = app
+        end
+
+        local Applications = {}
+        for i=1, #TempApplications, 1 do
+            local app = TempApplications[i]
+            if app.enabled then
+                app.slot = i
+                Applications[app.app] = app
+            end
+        end
+
         SendNUIMessage({
             action = "LoadPhoneData",
             PhoneData = PhoneData,
             PlayerData = PlayerData,
             PlayerJob = PlayerData,
             PhoneJobs = QBCore.Shared.Jobs,
-            applications = Config.PhoneApplications,
+            applications = Applications,
             PlayerId = GetPlayerServerId(PlayerId())
         })
-
     end)
 end
 local function DisableDisplayControlActions()

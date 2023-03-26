@@ -1,8 +1,9 @@
-QBCore = exports['qb-core']:GetCoreObject()
+QBCore = exports[Config.Exports.Core]:GetCoreObject()
+Webhook = '' -- Set your discord Webhook here for screenshots (Not GoPro Camera)
 
 RegisterNetEvent('QBCore:Server:UpdateObject', function()
 	if source ~= '' then return false end
-	QBCore = exports['qb-core']:GetCoreObject()
+	QBCore = exports[Config.Exports.Core]:GetCoreObject()
 end)
 
 function PhoneNotify(source, title, message, icon, color, timeout)
@@ -56,4 +57,8 @@ QBCore.Commands.Add("p#", "Provide Phone Number", {}, false, function(source)
             })
 		end
 	end
+end)
+
+QBCore.Functions.CreateCallback("qb-phone:server:GetWebhook",function(_, cb)
+	cb(WebHook)
 end)
