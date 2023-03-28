@@ -4,7 +4,7 @@ local function RemoveCrypto(src, type, amount)
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player or not type or not amount then return end
 
-    local Crypto = Player.Functions.GetMetaData('crypto')
+    local Crypto = GetMetaData(src, 'crypto')
     if not Crypto then return end
     amount =  tonumber(amount)
     if amount < 1 then return false end
@@ -24,7 +24,7 @@ local function hasEnough(src, type, amount)
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player or not type or not amount then return end
 
-    local Crypto = Player.Functions.GetMetaData('crypto')
+    local Crypto = GetMetaData(src, 'crypto')
     if not Crypto then return end
 
     if Crypto[type] - tonumber(amount) >= 0 then
@@ -39,7 +39,7 @@ local function AddCrypto(src, type, amount)
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player or not type or not amount then return false end
 
-    local Crypto = Player.Functions.GetMetaData('crypto')
+    local Crypto = GetMetaData(src, 'crypto')
     if not Crypto then return false end
 
     Crypto[type] = Crypto[type] + tonumber(amount)

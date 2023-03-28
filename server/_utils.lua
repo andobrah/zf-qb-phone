@@ -62,3 +62,9 @@ end)
 QBCore.Functions.CreateCallback("qb-phone:server:GetWebhook",function(_, cb)
 	cb(WebHook)
 end)
+
+function GetMetaData(source, meta)
+    local Player = QBCore.Functions.GetPlayer(source)
+    if not meta or type(meta) ~= 'string' then return end
+    return Player.PlayerData.metadata[meta]
+end
