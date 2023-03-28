@@ -68,3 +68,7 @@ function GetMetaData(source, meta)
     if not meta or type(meta) ~= 'string' then return end
     return Player.PlayerData.metadata[meta]
 end
+
+if Config.Garages == nil then
+    Config.Garages = Garages
+end

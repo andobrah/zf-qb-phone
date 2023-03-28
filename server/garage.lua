@@ -12,9 +12,9 @@ RegisterNetEvent('qb-phone:server:sendVehicleRequest', function(data)
 
     if not Buyer then PhoneNotify(src, 'Vehicle Sale', 'Buyer was not found.', 'fas fa-exclamation-circle', '#f25f5c') return end
     if not data.price or not data.plate then return end
-    if Player.PlayerData.citizenid == OtherAsshole.PlayerData.citizenid then PhoneNotify(src, 'Vehicle Sale', 'You can\'t sell a vehicle to yourself.', 'fas fa-exclamation-circle', '#f25f5c') return end
+    if Seller.PlayerData.citizenid == Buyer.PlayerData.citizenid then PhoneNotify(src, 'Vehicle Sale', 'You can\'t sell a vehicle to yourself.', 'fas fa-exclamation-circle', '#f25f5c') return end
 
-    TriggerClientEvent('qb-phone:client:sendVehicleRequest', Asshole, data, Player)
+    TriggerClientEvent('qb-phone:client:sendVehicleRequest', Buyer, data, Seller)
 end)
 
 RegisterNetEvent('qb-phone:server:sellVehicle', function(data, Seller, type)
@@ -27,15 +27,15 @@ RegisterNetEvent('qb-phone:server:sellVehicle', function(data, Seller, type)
             Player.Functions.RemoveMoney('bank', data.price, "vehicle sale")
             SellerData.Functions.AddMoney('bank', data.price)            
             PhoneNotify(src, 'Vehicle Sale', 'You purchased the vehicle for $' .. data.price, 'fas fa-check-circle', '#70c1b3')
-            PhoneNotify(Seller.PlayerData.source, 'Vehicle Sale', 'Your vehicle was successfully purchased', 'fas fa-check-circle', '#70c1b3')
+            PhoneNotify(SellerData.PlayerData.source, 'Vehicle Sale', 'Your vehicle was successfully purchased', 'fas fa-check-circle', '#70c1b3')
 
             MySQL.update('UPDATE player_vehicles SET citizenid = ?, garage = ?, state = ? WHERE plate = ?',{Player.PlayerData.citizenid, Config.SellGarage, 1, data.plate})
             -- Update Garages
             TriggerClientEvent('qb-phone:client:updateGarages', src)
-            TriggerClientEvent('qb-phone:client:updateGarages', Seller.PlayerData.source)
+            TriggerClientEvent('qb-phone:client:updateGarages', SellerData.PlayerData.source)
         else
             PhoneNotify(src, 'Vehicle Sale', 'Insufficient Funds', 'fas fa-exclamation-circle', '#f25f5c')
-            PhoneNotify(Seller.PlayerData.source, 'Vehicle Sale', 'Your vehicle was not purchased', 'fas fa-exclamation-circle', '#f25f5c')
+            PhoneNotify(SellerData.PlayerData.source, 'Vehicle Sale', 'Your vehicle was not purchased', 'fas fa-exclamation-circle', '#f25f5c')
         end
     elseif type == 'denied' then
         PhoneNotify(src, 'Vehicle Sale', 'Request denied', 'fas fa-exclamation-circle', '#f25f5c')
