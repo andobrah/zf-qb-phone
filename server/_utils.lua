@@ -60,7 +60,7 @@ QBCore.Commands.Add("p#", "Provide Phone Number", {}, false, function(source)
 end)
 
 QBCore.Functions.CreateCallback("qb-phone:server:GetWebhook",function(_, cb)
-	cb(WebHook)
+	cb(Webhook)
 end)
 
 function GetMetaData(source, meta)
