@@ -111,7 +111,7 @@ local function LoadPhone()
         while pData == nil do Wait(25) end
 
         PhoneData.PlayerData = PlayerData
-        local PhoneMeta = PhoneData.PlayerData.metadata["phone"]
+        local PhoneMeta = PhoneData.PlayerData.metadata["phonedata"]
         PhoneData.MetaData = PhoneMeta
 
         PhoneData.MetaData.profilepicture = PhoneMeta.profilepicture or "default"
