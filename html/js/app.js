@@ -743,6 +743,9 @@ $(document).ready(function(){
                     }
                 }
                 break;
+            case "UpdateJobs":
+                QB.Phone.Data.PhoneJobs = event.data.jobs
+                break;
             case "RefreshWhatsappAlerts":
                 QB.Phone.Functions.ReloadWhatsappAlerts(event.data.Chats);
                 break;
